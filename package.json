@@ -1,0 +1,28 @@
+{
+  "name": "kalkulator",
+  "version": "1.0.0",
+  "description": "Kalkulator desktop menggunakan Electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "author": "AL MUZZAMMIL",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^14.1.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.example.kalkulator",
+    "productName": "Kalkulator",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "path/to/your/icon.ico"
+    }
+  }
+}

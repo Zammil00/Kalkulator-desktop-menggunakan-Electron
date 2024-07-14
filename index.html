@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Kalkulator Plus</title>
+    <link rel="stylesheet" href="assets/index.css" />
+  </head>
+  <body>
+    <div class="calculator">
+      <h4>KALKULATOR PLUS By ZAMMIL</h4>
+      <input type="text" id="display" disabled />
+      <button onclick="appendNumber(7)">7</button>
+      <button onclick="appendNumber(8)">8</button>
+      <button onclick="appendNumber(9)">9</button>
+      <button class="operation" onclick="setOperation('/')">/</button>
+      <button onclick="appendNumber(4)">4</button>
+      <button onclick="appendNumber(5)">5</button>
+      <button onclick="appendNumber(6)">6</button>
+      <button class="operation" onclick="setOperation('*')">*</button>
+      <button onclick="appendNumber(1)">1</button>
+      <button onclick="appendNumber(2)">2</button>
+      <button onclick="appendNumber(3)">3</button>
+      <button class="operation" onclick="setOperation('-')">-</button>
+      <button onclick="appendNumber(0)">0</button>
+      <button onclick="appendDecimal()">.</button>
+      <button class="equal" onclick="calculate()">=</button>
+      <button class="operation" onclick="setOperation('+')">+</button>
+      <button class="clear" onclick="clearDisplay()">C</button>
+      <!-- <button class="convert" onclick="convert('ipk')">IPK</button>
+      <button class="convert" onclick="convert('ips')">IPS</button> -->
+    </div>
+
+    <script>
+      let currentInput = "";
+      let currentOperation = null;
+      let previousInput = "";
+
+      function appendNumber(number) {
+        currentInput += number;
+        updateDisplay();
+      }
+
+      function appendDecimal() {
+        if (!currentInput.includes(".")) {
+          currentInput += ".";
+          updateDisplay();
+        }
+      }
+
+      function setOperation(operation) {
+        if (currentInput === "") return;
+        if (previousInput !== "") {
+          calculate();
+        }
+        currentOperation = operation;
+        previousInput = currentInput;
+        currentInput = "";
+      }
+
+      function calculate() {
+        let result;
+        const prev = parseFloat(previousInput);
+        const current = parseFloat(currentInput);
+        if (isNaN(prev) || isNaN(current)) return;
+        switch (currentOperation) {
+          case "+":
+            result = prev + current;
+            break;
+          case "-":
+            result = prev - current;
+            break;
+          case "*":
+            result = prev * current;
+            break;
+          case "/":
+            result = prev / current;
+            break;
+          default:
+            return;
+        }
+        currentInput = result;
+        currentOperation = null;
+        previousInput = "";
+        updateDisplay();
+      }
+
+      function clearDisplay() {
+        currentInput = "";
+        currentOperation = null;
+        previousInput = "";
+        updateDisplay();
+      }
+
+      function updateDisplay() {
+        document.getElementById("display").value = currentInput;
+      }
+
+      function convert(type) {
+        if (currentInput === "") return;
+        let result;
+        switch (type) {
+          case 'ipk':
+            result = convertToIPK(parseFloat(currentInput));
+            break;
+          case 'ips':
+            result = convertToIPS(parseFloat(currentInput));
+            break;
+          default:
+            return;
+        }
+        currentInput = result;
+        updateDisplay();
+      }
+
+      function convertToIPK(value) {
+        // Implementasikan logika konversi IPK di sini
+        const maxValue = 4.00;
+        const scaleFactor = 25; // Nilai 100 skala dibagi dengan 4 untuk konversi ke IPK
+        return (value / scaleFactor).toFixed(2);
+      }
+
+      function convertToIPS(value) {
+        // Implementasikan logika konversi IPS di sini
+        const maxValue = 4.00;
+        const scaleFactor = 25; // Nilai 100 skala dibagi dengan 4 untuk konversi ke IPS
+        return (value / scaleFactor).toFixed(2);
+      }
+    </script>
+  </body>
+</html>
