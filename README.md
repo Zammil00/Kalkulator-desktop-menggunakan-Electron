@@ -58,5 +58,5 @@ Proyek ini dilisensikan di bawah lisensi MIT. Lihat file [LICENSE](LICENSE) untu
 
 ```
 
-Gantilah `https://github.com/Zammil00/Kalkulator-desktop-menggunakan-Electron` dengan URL repository GitHub Anda yang sebenarnya. Deskripsi ini memberikan gambaran umum tentang proyek Anda, fitur-fiturnya, dan langkah-langkah untuk menjalankannya, sehingga memudahkan orang lain untuk memahami dan menggunakan proyek Anda.
+`https://github.com/Zammil00/Kalkulator-desktop-menggunakan-Electron`
 ```
